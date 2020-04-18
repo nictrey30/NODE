@@ -21,6 +21,11 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => `server running on port ${PORT}`)
 ```
 
+## Basic Route Handling
+
+- Handling requests/routes is simple
+- app.get(), app.post(), app.put(), app.delete(), etc.
+
 ## Middleware
 
 **Middleware functions** are functions that have access to the **request** and **response** object. Express has built in middleware but middleware also comes from 3rd party packages as well as custom middleware.
