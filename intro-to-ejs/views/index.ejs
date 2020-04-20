@@ -1,0 +1,8 @@
+<ul>
+  <% people.forEach(human => { if(human.name === 'Dave'){ %>
+  <li>This is definitely <%= human.name %></li>
+  <% } else { %>
+  <li><%= human.name %></li>
+  <% } %> <% }) %>
+</ul>
+<h3>This is the child index view file</h3>
