@@ -3,9 +3,13 @@ const express = require('express'),
   expressLayouts = require('express-ejs-layouts'),
   PORT = process.env.PORT || 5000,
   flash = require('connect-flash'),
-  session = require('express-session');
+  session = require('express-session'),
+  passport = require('passport');
 
 const mongoose = require('mongoose');
+
+// Passport Config
+require('./config/passport')(passport);
 
 // DB config
 const db = require('./config/keys').MongoURI;
@@ -32,13 +36,17 @@ app.use(
   })
 );
 
+// passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
 // connect-flash
 app.use(flash());
 
 // global vars
 app.use((req, res, next) => {
   res.locals.success_msg = req.flash('success_msg');
-  res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
   next();
 });
 
